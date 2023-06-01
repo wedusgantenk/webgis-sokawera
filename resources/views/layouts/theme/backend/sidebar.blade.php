@@ -22,9 +22,8 @@
              </a>
          </li>
          <li class="menu-header small text-uppercase"><span class="menu-header-text">Profile Desa</span></li>
-         <li class="menu-item">
-             <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                 class="menu-link">
+         <li class="menu-item {{ request()->is('admin/profile') ? 'active' : '' }}">
+             <a href="{{ route('admin.sejarah.index') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-info-circle"></i>
                  <div>Sejarah Desa</div>
              </a>
@@ -57,7 +56,7 @@
                  <div>Data Tanah</div>
              </a>
          </li>
-         <li class="menu-item {{ (request()->is('admin/tanah/create')) ? 'active' : '' }}">
+         <li class="menu-item {{ request()->is('admin/tanah/create') ? 'active' : '' }}">
              <a href="{{ route('admin.tanah.create') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-plus"></i>
                  <div>Tambah Data Tanah</div>

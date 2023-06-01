@@ -25,6 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->group(function () {
     Route::get('', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('dashboard');
 
+    // route profile
+    Route::prefix('profile')->group(function () {
+        Route::get('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'index'])->name('admin.sejarah.index');
+        Route::post('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'store'])->name('admin.sejarah.store');
+    });
+
     // route tanah
     Route::prefix('tanah')->group(function () {
         Route::get('', [App\Http\Controllers\Admin\TanahController::class, 'index'])->name('admin.tanah.index');
