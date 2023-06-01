@@ -27,6 +27,15 @@ Route::prefix('admin')->group(function () {
 
     // route profile
     Route::prefix('profile')->group(function () {
+        Route::prefix('struktur')->group(function () {
+            Route::get('', [App\Http\Controllers\Admin\Profile\StrukturController::class, 'index'])->name('admin.struktur.index');
+            Route::get('create', [App\Http\Controllers\Admin\Profile\StrukturController::class, 'create'])->name('admin.struktur.create');
+            Route::post('create', [App\Http\Controllers\Admin\Profile\StrukturController::class, 'store'])->name('admin.struktur.store');
+            Route::get('edit/{id}', [App\Http\Controllers\Admin\Profile\StrukturController::class, 'edit'])->name('admin.struktur.edit');
+            Route::patch('edit/{id}', [App\Http\Controllers\Admin\Profile\StrukturController::class, 'update'])->name('admin.struktur.update');
+            Route::delete('edit/{id}', [App\Http\Controllers\Admin\Profile\StrukturController::class, 'destroy'])->name('admin.struktur.destroy');
+        });
+
         Route::get('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'index'])->name('admin.sejarah.index');
         Route::post('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'store'])->name('admin.sejarah.store');
     });

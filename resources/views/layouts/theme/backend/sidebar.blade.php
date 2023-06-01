@@ -28,25 +28,10 @@
                  <div>Sejarah Desa</div>
              </a>
          </li>
-         <li class="menu-item">
-             <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                 class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-map-alt"></i>
-                 <div>Wilayah Desa</div>
-             </a>
-         </li>
-         <li class="menu-item">
-             <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                 class="menu-link">
+         <li class="menu-item {{ request()->is('admin/profile/struktur*') ? 'active' : '' }}">
+             <a href="{{ route('admin.struktur.index') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-info-circle"></i>
                  <div>Struktur Desa</div>
-             </a>
-         </li>
-         <li class="menu-item">
-             <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                 class="menu-link">
-                 <i class="menu-icon tf-icons bx bx-video"></i>
-                 <div>Vidio Profile</div>
              </a>
          </li>
          <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Desa</span></li>
