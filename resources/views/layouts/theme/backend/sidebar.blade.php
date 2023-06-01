@@ -15,7 +15,7 @@
 
      <ul class="menu-inner py-1">
          <!-- Dashboard -->
-         <li class="menu-item active">
+         <li class="menu-item {{ request()->is('admin') ? 'active' : '' }}">
              <a href="{{ route('dashboard') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
                  <div data-i18n="Analytics">Dashboard</div>
@@ -51,13 +51,13 @@
              </a>
          </li>
          <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Desa</span></li>
-         <li class="menu-item">
+         <li class="menu-item {{ request()->is('admin/tanah') ? 'active' : '' }}">
              <a href="{{ route('admin.tanah.index') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-folder"></i>
                  <div>Data Tanah</div>
              </a>
          </li>
-         <li class="menu-item">
+         <li class="menu-item {{ (request()->is('admin/tanah/create')) ? 'active' : '' }}">
              <a href="{{ route('admin.tanah.create') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-plus"></i>
                  <div>Tambah Data Tanah</div>
