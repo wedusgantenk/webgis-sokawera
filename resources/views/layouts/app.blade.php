@@ -50,7 +50,11 @@
                         <a class="nav-link" href="#peta">Peta</a>
                     </li>
                 </ul>
-                <a href="{{ route('login') }}" class="btn btn-primary">Login Account</a>
+                @guest
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login Account</a>
+                @else
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Dashboard</a>
+                @endguest
             </div>
         </div>
     </nav>
