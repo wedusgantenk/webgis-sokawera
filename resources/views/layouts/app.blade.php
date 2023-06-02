@@ -50,20 +50,23 @@
                         <a class="nav-link" href="#peta">Peta</a>
                     </li>
                 </ul>
-                <a href="" class="btn btn-primary">Login Account</a>
+                <a href="{{ route('login') }}" class="btn btn-primary">Login Account</a>
             </div>
         </div>
     </nav>
 
-    <header>
-        <div class="container">
-            <div class="mt-4 p-5 bg-primary text-white jumbo">
-                <img src="https://bontomasila.desa.id/desa/logo/Bulukumba_100x100__sid__QlgwPX4.png" alt="">
-                <h2>Website Desa</h2>
-                <p>Kec Purwokerto Selatan, Kab Banyumas</p>
+    @if (request()->is('/'))
+        <header>
+            <div class="container">
+                <div class="mt-4 p-5 bg-primary text-white jumbo">
+                    <img src="https://bontomasila.desa.id/desa/logo/Bulukumba_100x100__sid__QlgwPX4.png" alt="">
+                    <h2>Website Desa</h2>
+                    <p>Kec Purwokerto Selatan, Kab Banyumas</p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
+    @endif
+
 
     <main>
         @yield('content')
