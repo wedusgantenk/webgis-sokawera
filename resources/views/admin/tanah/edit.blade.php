@@ -240,7 +240,7 @@
     <script type="text/javascript">
         L.mapbox.accessToken =
             'pk.eyJ1Ijoib2phbmFscGhhIiwiYSI6ImNreHR0ZGp1MzVuZGcyemt5MHg3Z2t4eHQifQ.peGpGa_e1Bs4amUI5AsDWQ';
-        const map = L.map('map').setView([-7.43938, 109.24628], 15);
+        const map = L.map('map').setView([{{ env('MAP_LATITUDE') }}, {{ env('MAP_LONGITUDE') }}], 15);
 
         const tiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L
             .mapbox.accessToken, {
