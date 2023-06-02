@@ -136,4 +136,15 @@ class TanahController extends Controller
         }
         return redirect()->route('admin.tanah.index')->with('success', 'Data Berhasil diupdate');
     }
+
+    public function destroy($id)
+    {
+        $data = Tanah::find($id);
+        if (empty($data)) {
+            # code...
+            return redirect()->route('admin.tanah.index')->with('galat', 'Data Tidak ada');
+        }
+        $data->delete();
+        return redirect()->route('admin.tanah.index')->with('success', 'Data Berhasil dihapus');
+    }
 }

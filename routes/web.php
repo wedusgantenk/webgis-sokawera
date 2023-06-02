@@ -45,6 +45,7 @@ Route::prefix('admin')->group(function () {
         Route::get('', [App\Http\Controllers\Admin\TanahController::class, 'index'])->name('admin.tanah.index');
         Route::get('edit/{id}', [App\Http\Controllers\Admin\TanahController::class, 'edit'])->name('admin.tanah.edit');
         Route::patch('edit/{id}', [App\Http\Controllers\Admin\TanahController::class, 'update'])->name('admin.tanah.update');
+        Route::delete('edit/{id}', [App\Http\Controllers\Admin\TanahController::class, 'destroy'])->name('admin.tanah.destroy');
         Route::get('create', [App\Http\Controllers\Admin\TanahController::class, 'create'])->name('admin.tanah.create');
         Route::post('create', [App\Http\Controllers\Admin\TanahController::class, 'store'])->name('admin.tanah.store');
     });

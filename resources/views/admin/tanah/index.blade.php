@@ -40,14 +40,17 @@
                                         <td>
                                             <strong>{{ $item->luas_tanah }} m<sup>2</sup> </strong>
                                         </td>
-                                        <td>
+                                        <td class="d-flex">
                                             <a href="{{ route('admin.tanah.edit', $item->id) }}"
                                                 class="btn btn-icon btn-outline-primary">
                                                 <span class="tf-icons bx bx-edit"></span>
                                             </a>
-                                            <button type="button" class="btn btn-icon btn-outline-danger">
-                                                <span class="tf-icons bx bx-trash"></span>
-                                            </button>
+
+                                            <form method="POST" action="{{ route('admin.tanah.destroy', $item->id) }}">
+                                                @csrf @method('DELETE')
+                                                <button type="button" class="btn btn-outline-danger deleteBtn ms-2"><i
+                                                        class="bx bx-trash"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @empty
@@ -70,4 +73,28 @@
             <!--/ Basic Bootstrap Table -->
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $('.deleteBtn').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Apakah kamu ingin menghapus data ini",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 @endsection
