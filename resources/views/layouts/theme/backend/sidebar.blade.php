@@ -34,10 +34,35 @@
                  <div>Struktur Desa</div>
              </a>
          </li>
-         <li class="menu-item {{ request()->is('admin/profile/demografi') ? 'active' : '' }}">
+         <li class="menu-header small text-uppercase"><span class="menu-header-text">Demografi Desa</span></li>
+         <li class="menu-item {{ request()->is('admin/demografi') ? 'active' : '' }}">
              <a href="{{ route('admin.demografi.index') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-info-circle"></i>
                  <div>Demografi Desa</div>
+             </a>
+         </li>
+         <li class="menu-item {{ request()->is('admin/demografi/pendidikan*') ? 'active' : '' }}">
+             <a href="{{ route('demografi.pendidikan.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                 <div>Pendidikan Desa</div>
+             </a>
+         </li>
+         <li class="menu-item {{ request()->is('admin/demografi/pekerjaan*') ? 'active' : '' }}">
+             <a href="{{ route('demografi.pekerjaan.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                 <div>Pekerjaan Desa</div>
+             </a>
+         </li>
+         <li class="menu-item {{ request()->is('admin/demografi/penduduk*') ? 'active' : '' }}">
+             <a href="{{ route('demografi.penduduk.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                 <div>Penduduk Desa</div>
+             </a>
+         </li>
+         <li class="menu-item {{ request()->is('admin/demografi/agama*') ? 'active' : '' }}">
+             <a href="{{ route('demografi.agama.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                 <div>Data Agama</div>
              </a>
          </li>
          <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Desa</span></li>

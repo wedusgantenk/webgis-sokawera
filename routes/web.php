@@ -38,9 +38,26 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'index'])->name('admin.sejarah.index');
         Route::post('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'store'])->name('admin.sejarah.store');
+    });
 
-        Route::get('demografi', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'index'])->name('admin.demografi.index');
-        Route::post('demografi', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'store'])->name('admin.demografi.store');
+    Route::prefix('demografi')->group(function () {
+        Route::get('', [App\Http\Controllers\Admin\Demografi\IndexController::class, 'index'])->name('admin.demografi.index');
+        Route::resource('agama', App\Http\Controllers\Admin\Demografi\AgamaController::class, [
+            'as' => 'demografi',
+            // 'only' => ['index', 'edit', 'store', 'destroy', 'show', 'update']
+        ]);
+        Route::resource('penduduk', App\Http\Controllers\Admin\Demografi\PendudukController::class, [
+            'as' => 'demografi',
+            // 'only' => ['index', 'edit', 'store', 'destroy', 'show', 'update']
+        ]);
+        Route::resource('pendidikan', App\Http\Controllers\Admin\Demografi\PendidikanController::class, [
+            'as' => 'demografi',
+            // 'only' => ['index', 'edit', 'store', 'destroy', 'show', 'update']
+        ]);
+        Route::resource('pekerjaan', App\Http\Controllers\Admin\Demografi\PekerjaanController::class, [
+            'as' => 'demografi',
+            // 'only' => ['index', 'edit', 'store', 'destroy', 'show', 'update']
+        ]);
     });
 
     // route tanah
