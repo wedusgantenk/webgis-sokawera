@@ -243,7 +243,8 @@
                         <div class="card-body">
                             <div class="card-title mb-0">
                                 <h5 class="m-0 me-2">Data Pekerjaan</h5>
-                                <small class="text-muted">Total {{ number_format($total_pekerjaan) }} Jenis Pekerjaan</small>
+                                <small class="text-muted">Total {{ number_format($total_pekerjaan) }} Jenis
+                                    Pekerjaan</small>
                             </div>
                             <hr>
                             <ul class="p-0 m-0 mt-4">
@@ -271,7 +272,8 @@
                         <div class="card-body">
                             <div class="card-title mb-0">
                                 <h5 class="m-0 me-2">Data Pendidikan</h5>
-                                <small class="text-muted">Total {{ number_format($total_pendidikan) }} Type Pendidikan</small>
+                                <small class="text-muted">Total {{ number_format($total_pendidikan) }} Type
+                                    Pendidikan</small>
                             </div>
                             <hr>
                             <ul class="p-0 m-0 mt-4">
@@ -463,27 +465,22 @@
             <tr>
                 <td>&nbsp;Jumlah Penduduk</td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
-                <td>1000 Jiwa&nbsp;</td>
+                <td>{{ $total_penduduk }} Jiwa&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;Pekerjaan</td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
-                <td>&nbsp;2321</td>
-            </tr>
-            <tr>
-                <td>&nbsp;Jumlah Suku</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
-                <td>&nbsp;2321</td>
+                <td>&nbsp;{{ count($pekerjaan) }}</td>
             </tr>
             <tr>
                 <td>&nbsp;Jumlah Agama</td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
-                <td>&nbsp;2321</td>
+                <td>&nbsp;{{ count($agama) }}</td>
             </tr>
             <tr>
                 <td>&nbsp;Jumlah Pendidikan</td>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
-                <td>&nbsp;2321</td>
+                <td>&nbsp;{{ count($pendidikan) }}</td>
             </tr>
         </tbody>
     </table>`;
