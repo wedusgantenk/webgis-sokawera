@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agama;
 use App\Models\Geolocation;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
+use App\Models\Penduduk;
 use App\Models\Profile;
 use App\Models\Struktur;
 use App\Models\Tanah;
@@ -53,6 +57,23 @@ class HomeController extends Controller
                 ]
             ];
         }
-        return view('welcome', compact('tanahJson', 'sejarah', 'struktur'));
+
+        // agama 
+        $agama = Agama::all();
+        $total_agama = Agama::sum('jumlah');
+
+        // pekerjaan
+        $pekerjaan = Pekerjaan::all();
+        $total_pekerjaan = Pekerjaan::sum('jumlah');
+
+        // pendidikan
+        $pendidikan = Pendidikan::all();
+        $total_pendidikan = Pendidikan::sum('jumlah');
+
+        // penduduk
+        $penduduk = Penduduk::all();
+        $total_penduduk = Penduduk::sum('jumlah');
+
+        return view('welcome', compact('tanahJson', 'sejarah', 'struktur', 'agama', 'total_agama', 'penduduk', 'total_penduduk', 'pendidikan', 'total_pendidikan', 'pekerjaan', 'total_pekerjaan'));
     }
 }

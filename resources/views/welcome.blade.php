@@ -205,6 +205,129 @@
     <section class="struktur" id="struktur">
         <div class="container">
             <div class="text-center mb-4">
+                <h3>Demografi Desa</h3>
+                <p class="fw-bold text-muted">Berikut adalah Demografi Desa</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-3 mb-4">
+                    <div class="card p-3 rounded-15">
+                        <div class="card-body">
+                            <div class="card-title mb-0">
+                                <h5 class="m-0 me-2">Data Penduduk</h5>
+                                <small class="text-muted">Total {{ number_format($total_penduduk) }} Jiwa</small>
+                            </div>
+                            <hr>
+                            <ul class="p-0 m-0 mt-4">
+                                @foreach ($penduduk as $pdd)
+                                    <li class="d-flex mb-3 pb-1">
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">{{ $pdd->title }}</h6>
+                                                <small class="text-muted">Total Seluruh Mencapai</small>
+                                            </div>
+                                            <div class="user-progress">
+                                                <small class="fw-semibold">{{ number_format($pdd->jumlah) }}</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card p-3 rounded-15">
+                        <div class="card-body">
+                            <div class="card-title mb-0">
+                                <h5 class="m-0 me-2">Data Pekerjaan</h5>
+                                <small class="text-muted">Total {{ number_format($total_pekerjaan) }} Jenis Pekerjaan</small>
+                            </div>
+                            <hr>
+                            <ul class="p-0 m-0 mt-4">
+                                @foreach ($pekerjaan as $pjk)
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">{{ $pjk->title }}</h6>
+                                                <small class="text-muted">Total Seluruh Mencapai</small>
+                                            </div>
+                                            <div class="user-progress">
+                                                <small class="fw-semibold">{{ number_format($pjk->jumlah) }}</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card p-3 rounded-15">
+                        <div class="card-body">
+                            <div class="card-title mb-0">
+                                <h5 class="m-0 me-2">Data Pendidikan</h5>
+                                <small class="text-muted">Total {{ number_format($total_pendidikan) }} Type Pendidikan</small>
+                            </div>
+                            <hr>
+                            <ul class="p-0 m-0 mt-4">
+                                @foreach ($pendidikan as $skl)
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">{{ $skl->title }}</h6>
+                                                <small class="text-muted">Total Seluruh Mencapai</small>
+                                            </div>
+                                            <div class="user-progress">
+                                                <small class="fw-semibold">{{ number_format($skl->jumlah) }}</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card p-3 rounded-15">
+                        <div class="card-body">
+                            <div class="card-title mb-0">
+                                <h5 class="m-0 me-2">Data agama</h5>
+                                <small class="text-muted">Total {{ number_format($total_agama) }} Type Agama</small>
+                            </div>
+                            <hr>
+                            <ul class="p-0 m-0 mt-4">
+                                @foreach ($agama as $agm)
+                                    <li class="d-flex mb-4 pb-1">
+                                        <div
+                                            class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                            <div class="me-2">
+                                                <h6 class="mb-0">{{ $agm->title }}</h6>
+                                                <small class="text-muted">Total Seluruh Mencapai</small>
+                                            </div>
+                                            <div class="user-progress">
+                                                <small class="fw-semibold">{{ number_format($agm->jumlah) }}</small>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="struktur" id="struktur">
+        <div class="container">
+            <div class="text-center mb-4">
                 <h3>Struktur Aparatur Desa</h3>
                 <p class="fw-bold text-muted">Berikut dalah sususan aparatur desa</p>
             </div>
