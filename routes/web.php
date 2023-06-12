@@ -38,6 +38,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::get('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'index'])->name('admin.sejarah.index');
         Route::post('', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'store'])->name('admin.sejarah.store');
+
+        Route::get('demografi', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'index'])->name('admin.demografi.index');
+        Route::post('demografi', [App\Http\Controllers\Admin\Profile\SejarahController::class, 'store'])->name('admin.demografi.store');
     });
 
     // route tanah

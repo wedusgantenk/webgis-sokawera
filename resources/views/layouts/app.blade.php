@@ -22,6 +22,7 @@
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
 
     <link rel="stylesheet" href="{{ asset('assets/fe/css/style.css') }}">
+    @yield('styles')
 </head>
 
 <body>
@@ -63,7 +64,7 @@
         <header>
             <div class="container">
                 <div class="mt-4 p-5 bg-primary text-white jumbo">
-                    <img src="https://bontomasila.desa.id/desa/logo/Bulukumba_100x100__sid__QlgwPX4.png" alt="">
+                    <img src="{{ asset('assets/banyumas.png') }}" width="80" class="mb-3" alt="">
                     <h2>Website Desa</h2>
                     <p>Kec Purwokerto Selatan, Kab Banyumas</p>
                 </div>

@@ -180,8 +180,37 @@
         legend.onAdd = function(map) {
             var div = L.DomUtil.create("div", "legend");
             div.innerHTML += "<h4>Demografi</h4>";
-            div.innerHTML += '<table><tbody><tr><td>&nbsp;Jumlah Penduduk</td><td>&nbsp;:&nbsp;</td><td>1000 Jiwa&nbsp;</td></tr><tr><td>&nbsp;Ketinggian</td><td>&nbsp;:&nbsp;</td><td>&nbsp;2321 MDPL</td></tr></tbody></table>';
-            // div.innerHTML += '<p>Ketinggian : 3998 mdpl </p><br>';
+            // div.innerHTML +=
+            //     '<table><tbody><tr><td>&nbsp;Jumlah Penduduk</td><td>&nbsp;:&nbsp;</td><td>1000 Jiwa&nbsp;</td></tr><tr><td>&nbsp;Ketinggian</td><td>&nbsp;:&nbsp;</td><td>&nbsp;2321 MDPL</td></tr></tbody></table>';
+            div.innerHTML += `<table>
+        <tbody>
+            <tr>
+                <td>&nbsp;Jumlah Penduduk</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>1000 Jiwa&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Pekerjaan</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Jumlah Suku</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Jumlah Agama</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Jumlah Pendidikan</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+        </tbody>
+    </table>`;
             // div.innerHTML += '<i style="background: #448D40"></i><span>Forest</span><br>';
             // div.innerHTML += '<i style="background: #E6E696"></i><span>Land</span><br>';
             // div.innerHTML += '<i style="background: #E8E6E0"></i><span>Residential</span><br>';

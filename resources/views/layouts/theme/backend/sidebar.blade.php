@@ -34,6 +34,12 @@
                  <div>Struktur Desa</div>
              </a>
          </li>
+         <li class="menu-item {{ request()->is('admin/profile/demografi') ? 'active' : '' }}">
+             <a href="{{ route('admin.demografi.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                 <div>Demografi Desa</div>
+             </a>
+         </li>
          <li class="menu-header small text-uppercase"><span class="menu-header-text">Data Desa</span></li>
          <li class="menu-item {{ request()->is('admin/tanah') ? 'active' : '' }}">
              <a href="{{ route('admin.tanah.index') }}" class="menu-link">

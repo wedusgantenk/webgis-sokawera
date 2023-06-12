@@ -151,6 +151,55 @@
 
             <div id="map" class="rounded-15"></div>
         </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered  modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Detail Tanah</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Nama Pemilik</td>
+                                    <td>:</td>
+                                    <td id="nama">@mdo</td>
+                                </tr>
+                                <tr>
+                                    <td>Pemilik Sebelumnya</td>
+                                    <td>:</td>
+                                    <td id="sebelum">@mdo</td>
+                                </tr>
+                                <tr>
+                                    <td>Objek Tanah</td>
+                                    <td>:</td>
+                                    <td>
+                                        <ul>
+                                            <li>Luas Bangunan : <strong id="bangunan"></strong> m<sup>2</sup></li>
+                                            <li>Luas Luas : <strong id="tanah"></strong> m<sup>2</sup></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Keterangan</td>
+                                    <td>:</td>
+                                    <td id="keterangan">@mdo</td>
+                                </tr>
+                                <tr>
+                                    <td>Perubahan</td>
+                                    <td>:</td>
+                                    <td id="perubahan">@mdo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="struktur" id="struktur">
@@ -183,31 +232,56 @@
     </section>
 @endsection
 
+@section('styles')
+    <style>
+        /*Legend specific*/
+        .legend {
+            padding: 6px 8px;
+            font: 14px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            line-height: 24px;
+            color: #555;
+        }
+
+        .legend h4 {
+            text-align: center;
+            font-size: 16px;
+            margin: 2px 12px 8px;
+            color: #777;
+        }
+
+        .legend p {
+            margin-bottom: -20px;
+        }
+
+        .legend span {
+            position: relative;
+            bottom: 3px;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin: 0 8px 0 0;
+            opacity: 0.7;
+        }
+
+        .legend i.icon {
+            background-size: 18px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+@endsection
+
 @section('scripts')
-    <script>
-        $(document).ready(function() {
-            var d = new Date();
-
-            var month = d.getMonth() + 1;
-            var day = d.getDate();
-
-            var output = d.getFullYear() + '-' +
-                (month < 10 ? '0' : '') + month + '-' +
-                (day < 10 ? '0' : '') + day;
-
-            var link = "https://api.banghasan.com/sholat/format/json/jadwal/kota/707/tanggal/" + output
-            // console.log(strDate);
-            $.get(link, function(data, status) {
-                // console.log(data.jadwal.data);
-                $('#imsak').html(data.jadwal.data.imsak);
-                $('#subuh').html(data.jadwal.data.subuh);
-                $('#dzuhur').html(data.jadwal.data.dzuhur);
-                $('#ashar').html(data.jadwal.data.ashar);
-                $('#magrib').html(data.jadwal.data.maghrib);
-                $('#isya').html(data.jadwal.data.isya);
-            });
-        });
-    </script>
+    <!-- Vendors JS -->
+    <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <!-- Page JS -->
+    <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
 
     <script type="text/javascript">
         const statesData = @json($tanahJson);
@@ -225,20 +299,80 @@
                 zoomOffset: -1
             }).addTo(map);
 
+        map.createPane('labels');
 
         /* global data */
-        const geojson = L.geoJson(statesData).addTo(map);
+        const geojson = L.geoJson(statesData).on('click', markerOnClick).addTo(map);
 
-        geojson.eachLayer((layer) => {
-            // layer.bindPopup(layer.feature.properties.name);
-            var body =
-                `<table class="table table-striped"> <tbody> <tr> <th>Nomor</th> <td>:</td> <td>` + layer.feature
-                .properties.nomor +
-                `</td> </tr> <tr> <th>Nama Pemilik</th> <td>:</td> <td>` + layer.feature.properties.nama_terbaru +
-                `</td> </tr> <tr> <th>Luas Tanah</th> <td>:</td> <td>` + layer.feature.properties.luas_tanah +
-                ` m<sup>2</sup></td> </tr> <tr> <th>Luas Bangunan</th> <td>:</td> <td>` + layer.feature.properties
-                .luas_bangunan + ` m<sup>2</sup></td> </tr> </tbody> </table>`
-            layer.bindPopup(body);
+        function markerOnClick(e) {
+            // alert("hi. you clicked the marker at " + e.latlng);
+            const sampelData = e['layer']['feature']['properties'];
+            var nama = sampelData['nama_terbaru'];
+            var sebelum = sampelData['nama_sebelumnya'];
+            var keterangan = sampelData['keterangan'];
+            var perubahan = sampelData['perubahan'];
+            var objek_bangunan = sampelData['luas_bangunan'];
+            var objek_tanah = sampelData['luas_tanah'];
+
+            // console.log(sampelData);
+            $("#exampleModal").modal('show');
+            // set modal
+            $("#nama").text(nama);
+            $("#sebelum").text(sebelum);
+            $("#keterangan").text(keterangan);
+            $("#perubahan").text(perubahan);
+            $("#tanah").text(objek_tanah);
+            $("#bangunan").text(objek_tanah);
+        }
+
+        /*Legend specific*/
+        var legend = L.control({
+            position: "bottomleft"
         });
+
+        legend.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "legend");
+            div.innerHTML += "<h4>Demografi</h4>";
+            // div.innerHTML +=
+            //     '<table><tbody><tr><td>&nbsp;Jumlah Penduduk</td><td>&nbsp;:&nbsp;</td><td>1000 Jiwa&nbsp;</td></tr><tr><td>&nbsp;Ketinggian</td><td>&nbsp;:&nbsp;</td><td>&nbsp;2321 MDPL</td></tr></tbody></table>';
+            div.innerHTML += `<table>
+        <tbody>
+            <tr>
+                <td>&nbsp;Jumlah Penduduk</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>1000 Jiwa&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Pekerjaan</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Jumlah Suku</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Jumlah Agama</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Jumlah Pendidikan</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</td>
+                <td>&nbsp;2321</td>
+            </tr>
+        </tbody>
+    </table>`;
+            // div.innerHTML += '<i style="background: #448D40"></i><span>Forest</span><br>';
+            // div.innerHTML += '<i style="background: #E6E696"></i><span>Land</span><br>';
+            // div.innerHTML += '<i style="background: #E8E6E0"></i><span>Residential</span><br>';
+            // div.innerHTML += '<i style="background: #FFFFFF"></i><span>Ice</span><br>';
+            // div.innerHTML +=
+            //     '<i class="icon" style="background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/194515-200.png);background-repeat: no-repeat;"></i><span>Grænse</span><br>';
+            return div;
+        };
+
+        legend.addTo(map);
     </script>
 @endsection
