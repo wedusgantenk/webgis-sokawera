@@ -62,6 +62,11 @@
                                 <td>:</td>
                                 <td id="perubahan">@mdo</td>
                             </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td id="alamat">@mdo</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -160,6 +165,7 @@
             var perubahan = sampelData['perubahan'];
             var objek_bangunan = sampelData['luas_bangunan'];
             var objek_tanah = sampelData['luas_tanah'];
+            var alamat = sampelData['alamat'];
 
             // console.log(sampelData);
             $("#exampleModal").modal('show');
@@ -170,6 +176,7 @@
             $("#perubahan").text(perubahan);
             $("#tanah").text(objek_tanah);
             $("#bangunan").text(objek_tanah);
+            $("#alamat").text(alamat);
         }
 
         /*Legend specific*/

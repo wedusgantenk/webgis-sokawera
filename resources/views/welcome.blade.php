@@ -6,9 +6,11 @@
 @section('content')
     <section class="sejarah" id="sejarah">
         <div class="container">
-            <blockquote class="blockquote">
-                <p>{{ $sejarah }}</p>
-            </blockquote>
+            <div class="card p-3 rounded-15">
+                <h2 class="fw-bold text-center">Sejarah Desa</h2>
+                <hr>
+                {!! $sejarah !!}
+            </div>
         </div>
     </section>
     <section class="sholat">
@@ -193,6 +195,11 @@
                                     <td>Perubahan</td>
                                     <td>:</td>
                                     <td id="perubahan">@mdo</td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat Tanah</td>
+                                    <td>:</td>
+                                    <td id="alamat">@mdo</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -438,6 +445,7 @@
             var perubahan = sampelData['perubahan'];
             var objek_bangunan = sampelData['luas_bangunan'];
             var objek_tanah = sampelData['luas_tanah'];
+            var alamat = sampelData['alamat'];
 
             // console.log(sampelData);
             $("#exampleModal").modal('show');
@@ -448,6 +456,7 @@
             $("#perubahan").text(perubahan);
             $("#tanah").text(objek_tanah);
             $("#bangunan").text(objek_tanah);
+            $("#alamat").text(alamat);
         }
 
         /*Legend specific*/

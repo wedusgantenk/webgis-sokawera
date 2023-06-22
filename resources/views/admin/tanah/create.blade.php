@@ -15,7 +15,7 @@
                     <form action="{{ route('admin.tanah.store') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-default-fullname">Nomor <small
                                             class="text-danger">* wajib di isi</small></label>
@@ -27,7 +27,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-3">
                                 <div class="mb-3">
@@ -50,6 +50,20 @@
                                     <input type="number" class="form-control @error('luas_bangunan') is-invalid @enderror"
                                         id="basic-default-fullname" name="luas_bangunan" placeholder="E.g 1000">
                                     @error('luas_bangunan')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-default-fullname">Alamat Tanah <small
+                                            class="text-danger">* wajib di isi</small></label>
+                                    <input type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                        id="basic-default-fullname" name="alamat" placeholder="E.g GKI 12A">
+                                    @error('alamat')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

@@ -15,11 +15,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Blok</th>
                                     <th>Pemilik Terbaru</th>
                                     <th>Pemilik Sebelumnya</th>
-                                    <th>Luas Tanah</th>
-                                    <th>Luas Bangunan</th>
+                                    <th>Objek Tanah</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -27,7 +25,6 @@
                                 @forelse ($data as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->nomor }}</td>
                                         <td>
                                             <strong>{{ $item->nama_terbaru }}</strong>
                                         </td>
@@ -35,10 +32,10 @@
                                             <strong>{{ $item->nama_sebelumnya ?? '-' }}</strong>
                                         </td>
                                         <td>
-                                            <strong>{{ $item->luas_tanah }} m<sup>2</sup> </strong>
-                                        </td>
-                                        <td>
-                                            <strong>{{ $item->luas_tanah }} m<sup>2</sup> </strong>
+                                            Luas Bangunan : {{ $item->luas_bangunan }} m<sup>2</sup>
+                                            <br>
+                                            Luas Tanah : {{ $item->luas_tanah }} m<sup>2</sup>
+                                            <br>
                                         </td>
                                         <td class="d-flex">
                                             <a href="{{ route('admin.tanah.edit', $item->id) }}"

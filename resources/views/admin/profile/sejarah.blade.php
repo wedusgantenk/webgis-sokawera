@@ -18,10 +18,10 @@
                             <div class="col-md-12">
                                 <input type="text" name="title" value="sejarah" hidden>
                                 <div class="mb-3">
-                                    <label class="form-label" for="basic-default-message">Tulis Singkat Tentang Sejarah
+                                    <label class="form-label" for="summernote">Tulis Singkat Tentang Sejarah
                                         Desa</label>
-                                    <textarea id="basic-default-message" rows="6" name="body"
-                                        class="form-control @error('body') is-invalid @enderror" placeholder="Hi, Do you have a moment to talk Joe?">{!! $data->body ?? null !!}</textarea>
+                                    <textarea id="summernote" rows="6" name="body" class="form-control @error('body') is-invalid @enderror"
+                                        placeholder="Hi, Do you have a moment to talk Joe?">{!! $data->body ?? null !!}</textarea>
                                     @error('body')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -36,4 +36,32 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('styles')
+    {{-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css"
+        integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"
+        integrity="sha512-6F1RVfnxCprKJmfulcxxym1Dar5FsT/V2jiEUvABiaEiFWoQ8yHvqRM/Slf0qJKiwin6IDQucjXuolCfCKnaJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Hello stand alone ui',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'ol']],
+                    ['insert', ['link']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
 @endsection

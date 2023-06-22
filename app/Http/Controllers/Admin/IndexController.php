@@ -35,7 +35,8 @@ class IndexController extends Controller
                     "perubahan" => $tanah->perubahan,
                     "luas_tanah" => $tanah->luas_tanah,
                     "luas_bangunan" => $tanah->luas_bangunan,
-                    "nomor" => $tanah->nomor,
+                    // "nomor" => $tanah->nomor,
+                    "alamat" => $tanah->alamat,
                 ],
                 "geometry" => [
                     "type" => "Polygon",

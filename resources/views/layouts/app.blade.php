@@ -29,7 +29,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('assets/logo.png') }}" alt="Bootstrap" width="150" height="40">
+                <img src="{{ asset('assets/logo.png') }}" alt="Bootstrap" width="100" height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -63,7 +63,8 @@
     @if (request()->is('/'))
         <header>
             <div class="container">
-                <div class="mt-4 p-5 bg-primary text-white jumbo">
+                <div class="mt-4 p-5 bg-primary text-white jumbo"
+                    style="background: url({{ asset('assets/backgroud.jpg') }})">
                     <img src="{{ asset('assets/banyumas.png') }}" width="80" class="mb-3" alt="">
                     <h2>Website Desa</h2>
                     <p>Kec Purwokerto Selatan, Kab Banyumas</p>

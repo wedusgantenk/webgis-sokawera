@@ -23,7 +23,8 @@ class TanahController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nomor' => 'required',
+            // 'nomor' => 'required',
+            'alamat' => 'required',
             'luas_tanah' => 'required|integer',
             'luas_bangunan' => 'required|integer',
             'pemilik_terbaru' => 'required',
@@ -39,9 +40,10 @@ class TanahController extends Controller
         }
 
         $tanah = Tanah::create([
-            'nomor' => $request->nomor,
+            // 'nomor' => $request->nomor,
             'luas_tanah' => $request->luas_tanah,
             'luas_bangunan' => $request->luas_bangunan,
+            'alamat' => $request->alamat,
             'nama_terbaru' => $request->pemilik_terbaru,
             'nama_sebelumnya' => $request->pemilik_lama,
             'keterangan' => $request->keterangan,
@@ -100,7 +102,8 @@ class TanahController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nomor' => 'required',
+            // 'nomor' => 'required',
+            'alamat' => 'required',
             'luas_tanah' => 'required|integer',
             'luas_bangunan' => 'required|integer',
             'pemilik_terbaru' => 'required',
@@ -116,9 +119,10 @@ class TanahController extends Controller
         }
 
         $data->update([
-            'nomor' => $request->nomor,
+            // 'nomor' => $request->nomor,
             'luas_tanah' => $request->luas_tanah,
             'luas_bangunan' => $request->luas_bangunan,
+            'alamat' => $request->alamat,
             'nama_terbaru' => $request->pemilik_terbaru,
             'nama_sebelumnya' => $request->pemilik_lama,
             'keterangan' => $request->keterangan,
