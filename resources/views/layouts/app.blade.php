@@ -64,7 +64,9 @@
         <header>
             <div class="container">
                 <div class="mt-4 p-5 bg-primary text-white jumbo"
-                    style="background: url({{ asset('assets/backgroud.jpg') }})">
+                    style="background: url({{ asset('assets/background.jpg') }})";
+                    style="background-position: center">
+                    
                     <img src="{{ asset('assets/banyumas.png') }}" width="80" class="mb-3" alt="">
                     <h2>Website Desa</h2>
                     <p>Kec Purwokerto Selatan, Kab Banyumas</p>

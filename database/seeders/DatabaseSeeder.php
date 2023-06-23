@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(Rayhan::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -24,10 +25,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
-            'name' => fake()->name(),
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin123')
-        ]);
+        //User::create([
+        //    'name' => fake()->name(),
+        //    'email' => 'admin@admin.com',
+        //    'password' => Hash::make('admin123')
+        //]);
     }
 }
